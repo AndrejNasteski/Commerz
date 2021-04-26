@@ -3,11 +3,12 @@ package com.project.commerz.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name = "shop_users")
-public class User {
+public class ShopUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,17 +18,33 @@ public class User {
     private String surname;
     private String eMail;
     private String phoneNumber;
+    @OneToMany
+    private List<Ad> adList;
 
-    public User(){
+    public ShopUser() {
+        adList = new ArrayList<>();
     }
 
-    public User(String username, String password, String name, String surname, String eMail, String phoneNumber) {
+    public ShopUser(String username, String password, String name, String surname, String eMail, String phoneNumber) {
         this.username = username;
         this.password = password;
         this.name = name;
         this.surname = surname;
         this.eMail = eMail;
         this.phoneNumber = phoneNumber;
+        adList = new ArrayList<>();
+    }
+
+    public void appendNewAd(Ad ad) {
+        this.adList.add(ad);
+    }
+
+    public List<Ad> getAdList() {
+        return adList;
+    }
+
+    public void setAdList(List<Ad> adList) {
+        this.adList = adList;
     }
 
     public Long getId() {

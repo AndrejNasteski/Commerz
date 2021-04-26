@@ -9,7 +9,14 @@ import java.util.Optional;
 
 public interface AdService {
     List<Ad> findAllAds();
-    List<Ad> searchAds(String fullTextSearch, Category category, Location location, Long price);
+
+    List<Ad> searchAds(String fullTextSearch, Category category, Location location);
+
     Optional<Ad> findAdById(Long id);
+
     void deleteById(Long id);
+
+    long numberOfAds();
+
+    void save(String name, String description, Long categoryId, Long locationId, Long price, String phone, String email);
 }

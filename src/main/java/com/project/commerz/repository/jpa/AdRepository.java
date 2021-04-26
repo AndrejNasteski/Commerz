@@ -11,8 +11,15 @@ import java.util.List;
 @Repository
 public interface AdRepository extends JpaRepository<Ad, Long> {
     List<Ad> findAllByAdId(Long id);
+
     List<Ad> findAllByAdDescriptionLike(String description);
+
     List<Ad> findAllByCategory(Category category);
+
     List<Ad> findAllByPriceLessThanEqual(Long price);
+
     List<Ad> findAllByLocation(Location location);
+
+    @Override
+    <S extends Ad> S save(S s);
 }

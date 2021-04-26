@@ -14,20 +14,24 @@ public class Ad {
     private String adName;
     private String adDescription;
     private Long price;
+    private String phoneNumber;
+    private String eMail;
     @ManyToOne
     private Category category;
     @ManyToOne
     private Location location;
 
-    public Ad(){
+    public Ad() {
     }
 
-    public Ad(String adName, String adDescription, Long price, Category category, Location location) {
+    public Ad(String adName, String adDescription, Long price, Category category, Location location, String phoneNumber, String eMail) {
         this.adName = adName;
         this.adDescription = adDescription;
         this.price = price;
         this.category = category;
         this.location = location;
+        this.phoneNumber = phoneNumber;
+        this.eMail = eMail;
     }
 
     public Long getAdId() {
@@ -76,5 +80,21 @@ public class Ad {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String geteMail() {
+        return eMail;
+    }
+
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
     }
 }

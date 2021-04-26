@@ -1,6 +1,6 @@
 package com.project.commerz.service.impl;
 
-import com.project.commerz.model.User;
+import com.project.commerz.model.ShopUser;
 import com.project.commerz.repository.jpa.UserRepository;
 import com.project.commerz.service.UserService;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findUserById(Long id) {
+    public Optional<ShopUser> findUserById(Long id) {
         return userRepository.findById(id);
     }
 }

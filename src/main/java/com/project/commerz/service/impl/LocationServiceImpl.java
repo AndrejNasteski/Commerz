@@ -22,6 +22,13 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public Location findById(Long id) {
+        if (id == null) return null;
         return locationRepository.findAllByLocationId(id);
+    }
+
+    @Override
+    public Location findById(String id) {
+        if (id == null || id.isEmpty() || id.equals("null")) return null;
+        return locationRepository.findAllByLocationId(Long.valueOf(id));
     }
 }

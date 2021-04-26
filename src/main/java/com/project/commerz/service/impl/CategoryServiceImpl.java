@@ -22,6 +22,13 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category findById(Long id) {
+        if (id == null) return null;
         return categoryRepository.findAllByCategoryId(id);
+    }
+
+    @Override
+    public Category findById(String id) {
+        if (id == null || id.isEmpty() || id.equals("null")) return null;
+        return categoryRepository.findAllByCategoryId(Long.valueOf(id));
     }
 }
