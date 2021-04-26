@@ -63,13 +63,6 @@ public class listAdsController {
                 .skip((page - 1) * NUM_ADS_IN_PAGE)
                 .collect(Collectors.toList());
 
-//        List<Ad> adList = adService
-//                .findAllAds()
-//                .stream()
-//                .limit(NUM_ADS_IN_PAGE * page)
-//                .skip((page-1) * NUM_ADS_IN_PAGE)
-//                .collect(Collectors.toList());
-
         List<Category> categoryList = categoryService.findAllCategories();
         List<Location> locationList = locationService.findAllLocations();
         model.addAttribute("allAds", adList);
@@ -91,23 +84,6 @@ public class listAdsController {
             returnString += "&full_text=" + fullTextSearch;
         }
         return returnString;
-
-//
-//        Category c = categoryService.findById(categoryId);
-//        Location l = locationService.findById(locationId);
-//
-//        List<Ad> adList = adService.searchAds(fullTextSearch, c, l, price).stream()
-//                .limit(NUM_ADS_IN_PAGE * page)
-//                .skip((page-1) * NUM_ADS_IN_PAGE)
-//                .collect(Collectors.toList());
-//        List<Category> categoryList = categoryService.findAllCategories();
-//        List<Location> locationList = locationService.findAllLocations();
-//
-//        req.getSession().setAttribute("allAds", adList);
-//        req.getSession().setAttribute("categories", categoryList);
-//        req.getSession().setAttribute("locations", locationList);
-//        req.getSession().setAttribute("page_number", page);
-//        return "listAds";
     }
 
     @GetMapping("/ad/{adId}")
